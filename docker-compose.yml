@@ -1,0 +1,29 @@
+version: "3"
+services:
+  autocomplete:
+    image: node
+    working_dir: /app/server
+    environment:
+      MYSQL_DATABASE: "mysql_db"
+      MYSQL_USER: "autocomplete_app"
+      MYSQL_PASSWORD: "password"
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: 3306
+    volumes:
+      - ./server:/app/server
+    command: bash start.sh
+    ports: 
+      - "3000:3000"
+  mysql:
+    image: mysql:5.7
+    working_dir: /app/data
+    environment:
+      MYSQL_ROOT_PASSWORD: "qwerty"
+      MYSQL_DATABASE: "mysql_db"
+      MYSQL_USER: "autocomplete_app"
+      MYSQL_PASSWORD: "password"
+    volumes:
+      - ./.db:/var/lib/mysql
+      - ./data:/app/data
+    ports:
+      - "3306:3306"
