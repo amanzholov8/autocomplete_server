@@ -46,8 +46,8 @@ app.post('/', function (req, res) {
 		}
 		output.push(entry);
 	}
-  	res.send(JSON.stringify(output));
-  	console.log("Response sent");
+    res.send(JSON.stringify(output));
+    console.log("Response sent");
   });
 });
 
