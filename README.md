@@ -7,7 +7,7 @@ You can install them from the following links:
 - Docker: https://docs.docker.com/install/
 - Docker Compose: https://docs.docker.com/compose/install/
 
-After you have installed Docker (and Docker Compose), go to the ```kombo_project``` folder from terminal.
+After you have installed Docker (and Docker Compose), go to the ```autocomplete_server``` folder from terminal.
 
 Once inside the folder, run the following command:
 
@@ -21,7 +21,7 @@ docker-compose up
 
 ### Setting up the database
 Open a separate terminal window and run the following command: 
-(Note: you need to be inside the ```kombo_project``` folder)
+(Note: you need to be inside the ```autocomplete_server``` folder)
 
 ```
 docker-compose exec mysql bash setup_db.sh
