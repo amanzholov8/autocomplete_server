@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
   database: process.env.MYSQL_DATABASE
 });
 
-connection.connect(function(err) {
+connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to DB");
 });
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //eslint-disable-next-line no-undef
 require('./routes/routes.js')(app, db);
 
-app.listen(3000, function (err) {
+app.listen(3000, (err) => {
   if (err) throw err;
   console.log("Server listening");
 });

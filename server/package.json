@@ -4,6 +4,7 @@
   "description": "",
   "main": "autocomplete.js",
   "scripts": {
+    "start": "nodemon autocomplete.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
