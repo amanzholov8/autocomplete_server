@@ -18,38 +18,15 @@ connection.connect(function(err) {
   console.log("Connected to DB");
 });
 
+global.db = connection;
+
 //setting up the server endpoint
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//handling post requests
-app.post('/', function (req, res) {
-  console.log("Received a POST request");
-  const q = req.body.q;
-  const query = `
-  			  SELECT cities.*, countries.name AS country_name 
-			  FROM cities 
-			  INNER JOIN countries ON cities.country_id = countries.id
-			  WHERE cities.name LIKE ? 
-			  LIMIT 20`
-  const parameter = q + "%";
-  connection.query(query, [parameter], (err, rows) => {
-	if (err) throw err;
-	let output = [];
-	for (let i=0; i<rows.length; i++) {
-		let row = rows[i]
-		let entry = {
-			name: row.name,
-			coordinate: [row.latitude, row.longitude],
-			country: row.country_name
-		}
-		output.push(entry);
-	}
-    res.send(JSON.stringify(output));
-    console.log("Response sent");
-  });
-});
+//eslint-disable-next-line no-undef
+require('./routes/routes.js')(app, db);
 
 app.listen(3000, function (err) {
   if (err) throw err;
